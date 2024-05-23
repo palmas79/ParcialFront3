@@ -1,15 +1,21 @@
 import './App.css'
-import Cards from './components/Cards'
+import Autos from './components/Autos'
+import Form from './components/Form'
+import {autos} from "./utils/autos"
+import { useState } from 'react'
 
 function App() {  
+  const [showForm, setShowForm] = useState(false);
 
   return (
-    <div className='App'>
-      <h1>Carga de estudiantes</h1>
-      <form></form>
-      <Cards/>
+    <>
+      <h1>Eleccion de Autos</h1>
+      {autos.map((item) => (
+        <Autos item={item} key={item.id} setShowForm={setShowForm}/>
+      ))}
+      {showForm ? <Form /> : null}     
       
-    </div>
+    </>
   )
 }
 export default App
